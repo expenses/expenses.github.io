@@ -3,7 +3,9 @@ layout: post
 title:  "Hyperion Glossary"
 ---
 
-I've been reading Hyperion (and now The Fall of Hyperion) by Dan Simmons recently. I was inspired by [this post](https://mechanteanemone.wordpress.com/2013/08/02/lingo-peter-watts-blindsight/) that served as a useful glossary for when I was reading Blindsight by Peter Watts and got inspired to do something similar for Hyperion. This is a work-in-progress and basically just ripped from [Obsidian](https://obsidian.md/). I may or may not tidy it up at some point.
+I've been reading Hyperion (and now The Fall of Hyperion) by Dan Simmons recently. I was inspired by [this post](https://mechanteanemone.wordpress.com/2013/08/02/lingo-peter-watts-blindsight/) that served as a useful glossary for when I was reading Blindsight by Peter Watts and got inspired to do something similar for Hyperion. There shouldn't be any spoilers here, but if you really enjoy puzzles then I suggest you avoid this and have a go at figuring out things on your own. [This blog](https://freds-ramblings.blogspot.com/2011/11/dan-simmons-hyperion-pt-2-informal.html) has also published a glossary, though more focusing on the (many) literary references in the books.
+
+This is a work-in-progress and basically just ripped from [Obsidian](https://obsidian.md/).
 
 **Hegemony**:
 ruling government of humans across the Worldweb. Run by a CEO (Gladstone).
