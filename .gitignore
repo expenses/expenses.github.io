@@ -8,3 +8,4 @@ vendor
 .devenv
 
 result
+*.bak

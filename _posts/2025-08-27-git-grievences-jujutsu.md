@@ -1,13 +1,13 @@
 ---
 layout: post
-title:  "Git Grievances and Jujutsu"
+title:  "Git grievances and Jujutsu"
 ---
 
 I've been using git for possibly a decade at this point, and I've developed a certain workflow and habits using it. It's the best program in the world that also sucks a lot. Note that I always use git through the CLI.
 
 # Current Workflow
 
-I frequently use `git status` to check the current status of a repository. Sometimes I misspell it and because I have `help.autocorrent` set to `true` it interprets this as `git stash`:
+I frequently use `git status` to check the current status of a repository. Sometimes I misspell it and because I have `help.autocorrect` set to `true` it interprets this as `git stash`:
 
 ```
 ~ git stuas
@@ -15,7 +15,7 @@ WARNING: You called a Git command named 'stuas', which does not exist.
 Continuing under the assumption that you meant 'stash'.
 ```
 
-Rather annoying.
+Rather annoying. I think if I set up a `stuas` alias for `status` then this particular error would be avoided?
 
 I also use `git diff` a lot to review all pending changes and use [`delta`](https://github.com/dandavison/delta) as a pager as I find the output to be a lot more pleasant and readable.
 
@@ -43,7 +43,7 @@ Sorry, cannot split this hunk
 (1/1) Stage this hunk [y,n,q,a,d,e,p,?]?
 ```
 
-So in this case, if I were happy to commit the removal of `$$ line b` but not `%%% line c` I guess I'd have to manually restore `%%% line c`, commit then delete it again. This is stupid.
+So in this case, if I were happy to commit the removal of `$$ line b` but not `%%% line c` I'd have to `e`dit the line and remove the `-%%% line c`. This is a bit messy. I also didn't know about this until doing research for this post and thought that you had to do some more manual file editing, so it's not exactly obvious as an option.
 
 Sometimes, you're happy with a set of changes (**set A**), you want to hold back on committing another set (**set B**), but you're not sure if **set A** on its own is valid without some components of **set B**. What are your options here? If `git stash` was a good command, you'd be able to stash the set B~~ changes, run whatever commands you need to test the **set A** changes and then unstash the **set B** changes. `git stash` is unfortunately the opposite of a good command, and stashes both staged and unstaged changes, meaning that **set A** and **set B** go into the stash.
 
@@ -103,6 +103,43 @@ Modified regular file file.txt:
    4    3: line d
 ```
 
-I don't believe that there's a way of splitting off some changes into an existing commit, but something like `jj split` and `jj squash -t @-- -f @-` seems to work fine. It feels slightly awkward but maybe that's just how jujutsu is meant to be used.
+I don't believe that there's a way of splitting off some changes into an existing commit, but something like `jj split` and `jj squash -t @-- -f @-` seems to work fine. It feels slightly awkward but maybe that's just how Jujutsu is meant to be used.
 
 Shoutout to `jj undo` by the way, it has let me undo any and all mistakes in my testing here and has made the whole process a lot smoother.
+
+The equivalent of `git checkout <path>` seems to be `git restore -f @- <path>`. Maybe there's a better way but this is fine and I like the consistency of using the whole `@`, `@-` and `@--` etc thing to indicate revset. It's a lot nicer than `HEAD^1` or whatever you do in git.
+
+That's about it. Seems pretty good so far.
+
+# Ignoring a deletion of a file that exists in the repository
+
+In the repository for this blog, I've got a `Gemfile` file. This file needs to exist for the sake of the `jekyll` blog builder on GitHub, but it breaks my Jekyll workflow locally. I want to be able to delete it from my local filesystem without that deletion being committed. I could just rm `rm Gemfile` but then there'll permanently be a `deleted:    Gemfile` change that I'll need to ignore every time I run `git add` or `jj split`. Whatever I do to `.gitignore` makes no difference. Annoying.
+
+[`ijmacd` on reddit](https://old.reddit.com/r/git/comments/yu5mpc/how_to_delete_a_filefolder_locally_but_not_commit/iw7mdxp/) suggested the following:
+
+```
+git update-index --assume-unchanged file.c
+rm file.c
+```
+
+What the fuck?
+
+```
+--[no-]assume-unchanged
+  When this flag is specified, the object names recorded for the paths
+  are not updated. Instead, this option sets/unsets the "assume
+  unchanged" bit for the paths. When the "assume unchanged" bit is on,
+  the user promises not to change the file and allows Git to assume
+  that the working tree file matches what is recorded in the index. If
+  you want to change the working tree file, you need to unset the bit
+  to tell Git. This is sometimes helpful when working with a big
+  project on a filesystem that has a very slow lstat(2) system call
+  (e.g. cifs).
+
+  Git will fail (gracefully) in case it needs to modify this file in
+  the index e.g. when merging in a commit; thus, in case the
+  assumed-untracked file is changed upstream, you will need to handle
+  the situation manually.
+```
+
+This very weird command doesn't do anything for Jujutsu. In git it's at least not strictly required. You simply avoid adding the deletion with `git add`. This means you can never run `git add .` but often you don't want to be running that command all the time anyway. Jujutsu _feels_ different. It _feels_ like you're meant to be using `jj new` all the time. But if you're in this situation, you can't, as that'd add the deletion. So you have to use `jj split` every time. Not ideal.
