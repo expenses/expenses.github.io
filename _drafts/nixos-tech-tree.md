@@ -50,7 +50,7 @@ nix = {
 
 That alone is worth the price of entry IMO.
 
-If you really hate it then [nixkel](https://github.com/tweag/nickel) is in development and Guix uses GNU Guile, a Scheme implementation.
+If you really hate it then [nickel](https://github.com/tweag/nickel) is in development and Guix uses GNU Guile, a Scheme implementation.
 
 # nixpkgs
 
@@ -63,7 +63,7 @@ NixOS is what happens when you use nixpkgs and Nix Lang to create a linux operat
 You don't (and I definitely don't) need to care about the specifics, but having your OS defined like this means a couple of things:
 - You never, ever have to edit something outside your home directory
 - You'll forget what you have installed, as all the packages you're using are declaratively defined in your nixos config.
-- You're never going to put your system in a broken state by losing power inbetween updates, as switching your config happens more or less atomically.
+- You're never going to put your system in a broken state by losing power in-between updates, as switching your config happens more or less atomically.
 - Custom packages and scripts are first-class citizens and are treated no differently to 'official' packages from nixpkgs.
 
 Here's an arbitrary snippet from my NixOS config:

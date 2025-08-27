@@ -29,10 +29,10 @@ Hegemony space military.
 Branch of humans who split off from the rest since old earth died, adapted for zero g, live in the spaces between stars.
 
 **Farcaster**:
-Portal that allows for instanteous travel.
+Portal that allows for instantaneous travel.
 
 **Worldweb**:
-All worlds linked together via Farcasters for instanteous travel between them. Ruled by the Hegemony.
+All worlds linked together via Farcasters for instantaneous travel between them. Ruled by the Hegemony.
 
 **Hawking drive**:
 Spaceship engine for interstellar travel I think what spinships use?
@@ -52,7 +52,7 @@ The amount of missing time when travelling interstellar. Either by cryogenic sle
 **Poulsen treatments**:
 Treatments to deage (or at least give the appearance of deaging) someone. Expensive.
 
-[**Oört Cloud**](https://en.wikipedia.org/wiki/Oort_cloud):
+[**Oort Cloud**](https://en.wikipedia.org/wiki/Oort_cloud):
 Outer cloud of comets around a star. Up to a light year in radius.
 
 **Ramscout**:
