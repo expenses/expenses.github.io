@@ -1,9 +1,9 @@
----
-layout: post
-title:  "My Jujutsu workflow, tips & tricks"
----
++++
+title = 'My Jujutsu workflow, tips & tricks'
+date = 2025-10-03T00:00:00Z
++++
 
-_This is sort-of a followup post to [my previous post](/2025/08/27/git-grievences-jujutsu.html)._
+_This is sort-of a followup post to [my previous post](/posts/git-grievences-jujutsu/).
 
 I've been using [Jujutsu](https://github.com/jj-vcs/jj) exclusively for a month and a bit. While not perfect, I consider it a substantial improvement over git. I'm considering removing the `git` command from my `$PATH` all together.
 

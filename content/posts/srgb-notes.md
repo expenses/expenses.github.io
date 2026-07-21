@@ -1,7 +1,7 @@
----
-layout: post
-title:  "sRGB Notes"
----
++++
+title = 'sRGB Notes'
+date = 2025-10-03T00:00:00Z
++++
 
 _I wrote these notes in order to have an easy resource to link people involved in graphics work to. For a more in-depth overflow on digital color, read all of [The Hitchhiker's Guide to Digital Color](https://hg2dc.com/), starting with question 1._
 

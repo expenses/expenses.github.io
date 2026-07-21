@@ -1,7 +1,7 @@
----
-layout: post
-title:  "Writing a lightmapper in 2026"
----
++++
+title = 'Writing a lightmapper in 2026'
+date = 2026-05-07T00:00:00Z
++++
 
 ### Intro
 

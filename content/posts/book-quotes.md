@@ -1,7 +1,7 @@
----
-layout: post
-title:  "Notable Book Quotes"
----
++++
+title = 'Notable Book Quotes'
+date = 2025-08-24T00:00:00Z
++++
 
 I like reading a lot and end up taking phone pics of pages and quotes I like. Here are some:
 

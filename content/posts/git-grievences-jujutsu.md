@@ -1,9 +1,9 @@
----
-layout: post
-title:  "Git grievances and Jujutsu"
----
++++
+title = 'Git grievances and Jujutsu'
+date = 2025-08-27T00:00:00Z
++++
 
-_I wrote a followup to this post [here](/2025/10/03/jujutsu-workflow-tips-and-tricks.html)._
+_I wrote a followup to this post [here](/posts/jujutsu-workflow-tips-and-tricks/).
 
 I've been using git for possibly a decade at this point, and I've developed a certain workflow and habits using it. It's the best program in the world that also sucks a lot. Note that I always use git through the CLI.
 

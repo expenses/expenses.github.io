@@ -1,7 +1,8 @@
----
-layout: post
-title:  "Nix Tech Tree"
----
++++
+title = 'Nix Tech Tree'
+date = 2026-07-21T00:00:00Z
+draft = true
++++
 
 I run [https://nixos.org/](NixOS) on my laptop and I'm a big proponent of the Nix project. It's not easy to understand what Nix is, so I thought I'd have a go.
 
