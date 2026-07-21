@@ -210,6 +210,32 @@
 
 
 /**
+ * Notes (a single-page feed of short notes)
+ */
+.notes {
+  .note {
+    margin-bottom: $spacing-unit;
+    padding-top: $spacing-unit;
+    border-top: 1px solid $grey-color-light;
+
+    &:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+  }
+
+  .note-content {
+    margin-bottom: 0;
+  }
+
+  .note-permalink {
+    &:visited {
+      color: $brand-color;
+    }
+  }
+}
+
+/**
  * Posts
  */
 .post-header {

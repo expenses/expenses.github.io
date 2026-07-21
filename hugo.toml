@@ -12,8 +12,9 @@ disableKinds = ['taxonomy', 'term']
   rss = 'RSS'
   # Set to true to render post excerpts on the home post list.
   show_excerpts = false
-  # Optional top-nav links, e.g. header_pages = ['about.md'].
-  header_pages = []
+  # Optional top-nav links, e.g. header_pages = ['about.md']. Section pages
+  # can be referenced by their path, e.g. '/notes/'.
+  header_pages = ['/notes/']
 
 [markup.highlight]
   # Emit CSS classes (coloured by the ported minima syntax stylesheet) instead

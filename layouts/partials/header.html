@@ -15,8 +15,7 @@
 
       <div class="trigger">
         {{- range .Site.Params.header_pages -}}
-          {{- $page := $.Site.GetPage . -}}
-          {{- with $page -}}
+          {{- with $.Site.GetPage . -}}
             <a class="page-link" href="{{ .RelPermalink }}">{{ .Title }}</a>
           {{- end -}}
         {{- end -}}
