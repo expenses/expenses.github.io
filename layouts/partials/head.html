@@ -1,0 +1,62 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {{- /* Title */ -}}
+  {{- if .IsHome -}}
+    {{- $title := .Site.Title -}}
+    {{- with .Site.Params.description -}}
+      {{- $title = printf "%s | %s" $.Site.Title . -}}
+    {{- end -}}
+    <title>{{ $title }}</title>
+  {{- else -}}
+    <title>{{ .Title }} | {{ .Site.Title }}</title>
+  {{- end -}}
+
+  {{- /* Description */ -}}
+  {{- $description := .Description | default .Site.Params.description -}}
+  {{- with $description -}}
+    <meta name="description" content="{{ . | plainify }}">
+  {{- end -}}
+
+  <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+  {{- with $description -}}
+    <meta property="og:description" content="{{ . | plainify }}">
+  {{- end -}}
+  {{- $parts := split (.Site.Language.Locale | default "en-us") "-" -}}
+  {{- $locale := index $parts 0 -}}
+  {{- with index $parts 1 -}}{{- $locale = printf "%s_%s" $locale (upper .) -}}{{- end -}}
+  <meta property="og:locale" content="{{ $locale }}">
+  <meta property="og:url" content="{{ .Permalink }}">
+  <meta property="og:site_name" content="{{ .Site.Title }}">
+  <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+  {{- if .IsPage -}}
+    <meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+  {{- end -}}
+  <meta name="twitter:card" content="summary">
+  <meta property="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+
+  <link rel="canonical" href="{{ .Permalink }}">
+
+  {{- /* Stylesheet (port of minima). libsass is bundled with hugo extended;
+       this compiles the original minima @import-based SCSS unchanged. */ -}}
+  {{- $style := resources.Get "sass/main.scss" | toCSS (dict "transpiler" "libsass") | minify | fingerprint -}}
+  <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" crossorigin="anonymous">
+
+  {{- /* RSS feed */ -}}
+  {{- with .OutputFormats.Get "rss" -}}
+    <link href="{{ .RelPermalink }}" type="application/rss+xml" rel="alternate" title="{{ $.Site.Title }}">
+  {{- end -}}
+
+  {{- /* JSON-LD structured data */ -}}
+  {{- if .IsPage -}}
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"BlogPosting","headline":{{ .Title }},"description":{{ with $description }}{{ . | plainify | htmlEscape }}{{ end }},"datePublished":{{ .Date.Format "2006-01-02T15:04:05Z07:00" }},"dateModified":{{ .Date.Format "2006-01-02T15:04:05Z07:00" }},"mainEntityOfPage":{"@type":"WebPage","@id":{{ .Permalink }} },"url":{{ .Permalink }} }
+    </script>
+  {{- else -}}
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"WebSite","name":{{ .Site.Title }},"description":{{ with $description }}{{ . | plainify | htmlEscape }}{{ end }},"url":{{ .Permalink }} }
+    </script>
+  {{- end -}}
+</head>

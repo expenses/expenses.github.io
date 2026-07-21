@@ -1,0 +1,25 @@
+{{ define "main" }}
+<div class="home">
+  {{- with .Title -}}
+    <h1 class="page-heading">{{ . }}</h1>
+  {{- end -}}
+
+  {{ .Content }}
+
+  {{- if .Pages -}}
+    <h2 class="post-list-heading">{{ .Params.list_title | default "Posts" }}</h2>
+    <ul class="post-list">
+      {{- range .Pages -}}
+      <li>
+        <span class="post-meta">{{ .Date.Format "Jan 2, 2006" }}</span>
+        <h3>
+          <a class="post-link" href="{{ .RelPermalink }}">
+            {{ .Title }}
+          </a>
+        </h3>
+      </li>
+      {{- end -}}
+    </ul>
+  {{- end -}}
+</div>
+{{ end }}

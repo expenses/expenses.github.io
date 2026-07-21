@@ -1,0 +1,8 @@
+<ul class="social-media-list">
+  {{- with .Site.Params.github_username -}}
+    <li><a href="https://github.com/{{ . }}"><svg class="svg-icon"><use xlink:href="{{ "assets/minima-social-icons.svg#github" | relURL }}"></use></svg> <span class="username">{{ . }}</span></a></li>
+  {{- end -}}
+  {{- with .Site.Params.rss -}}
+    <li><a href="{{ "index.xml" | relLangURL }}"><svg class="svg-icon"><use xlink:href="{{ "assets/minima-social-icons.svg#rss" | relURL }}"></use></svg> <span>{{ . }}</span></a></li>
+  {{- end -}}
+</ul>

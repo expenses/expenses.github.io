@@ -1,9 +1,9 @@
 <footer class="site-footer h-card">
-  <data class="u-url" href="{{ "/" | relative_url }}"></data>
+  <data class="u-url" href="{{ "" | relLangURL }}"></data>
   <div class="wrapper">
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
-        {%- include social.html -%}
+        {{- partial "social.html" . -}}
       </div>
     </div>
   </div>

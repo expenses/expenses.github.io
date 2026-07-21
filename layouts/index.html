@@ -1,0 +1,31 @@
+{{ define "main" }}
+<div class="home">
+  {{- with .Params.title -}}
+    <h1 class="page-heading">{{ . }}</h1>
+  {{- end -}}
+
+  {{ .Content }}
+
+  {{- $posts := where .Site.RegularPages "Section" "posts" -}}
+  {{- if $posts -}}
+    <h2 class="post-list-heading">{{ .Params.list_title | default "Posts" }}</h2>
+    <ul class="post-list">
+      {{- range $posts -}}
+      <li>
+        <span class="post-meta">{{ .Date.Format "Jan 2, 2006" }}</span>
+        <h3>
+          <a class="post-link" href="{{ .RelPermalink }}">
+            {{ .Title }}
+          </a>
+        </h3>
+        {{- if $.Site.Params.show_excerpts -}}
+          {{ .Summary }}
+        {{- end -}}
+      </li>
+      {{- end -}}
+    </ul>
+
+    <p class="rss-subscribe">subscribe <a href="{{ "index.xml" | relLangURL }}">via RSS</a></p>
+  {{- end -}}
+</div>
+{{ end }}

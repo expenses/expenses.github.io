@@ -1,6 +1,26 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://expenses.github.io/'
 locale = 'en-us'
-title = 'My New Hugo Project'
+title = 'expenses.github.io'
+# Minima has no taxonomies, so skip the empty /tags/ and /categories/ pages.
+disableKinds = ['taxonomy', 'term']
+
+# Port of the customized Jekyll minima theme. Site-level variables are read by
+# the layout partials in layouts/partials/.
+[params]
+  description = 'A blog'
+  github_username = 'expenses'
+  rss = 'RSS'
+  # Set to true to render post excerpts on the home post list.
+  show_excerpts = false
+  # Optional top-nav links, e.g. header_pages = ['about.md'].
+  header_pages = []
+
+[markup.highlight]
+  # Emit CSS classes (coloured by the ported minima syntax stylesheet) instead
+  # of inline styles, matching the original Jekyll/Rouge look.
+  noClasses = false
+  style = 'default'
+  lineNos = false
 
 [markup.goldmark.renderer]
-unsafe = true
+  unsafe = true

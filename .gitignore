@@ -1,11 +1,12 @@
-_site
-.sass-cache
-.jekyll-cache
-.jekyll-metadata
-vendor
+# Hugo
+/public/
+/resources/_gen/
+.hugo_build.lock
 
-.devenv.flake.nix
+# devenv
 .devenv
-public
+.devenv.flake.nix
+
+# Misc
 result
 *.bak
