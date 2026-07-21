@@ -6,6 +6,6 @@ vendor
 
 .devenv.flake.nix
 .devenv
-
+public
 result
 *.bak
